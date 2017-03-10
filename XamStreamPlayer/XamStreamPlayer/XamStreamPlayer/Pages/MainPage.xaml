@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:XamStreamPlayer.Converters;assembly=XamStreamPlayer"
+             x:Class="XamStreamPlayer.Pages.MainPage">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+
+  <Grid HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="#C7E8FF"
+        RowSpacing="0">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="80" />
+    </Grid.RowDefinitions>
+
+    <StackLayout Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
+    <Label Text="Test stream player" VerticalOptions="Center" HorizontalOptions="Center" />
+    </StackLayout>
+
+
+  <!--==============Menu============-->
+  <Grid Grid.Row="1" BackgroundColor="#D1D1D1" ColumnSpacing="0">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+    <!--===Stop===-->
+    <Grid Grid.Column="0" Padding="15">
+      <Image Source="stop" Aspect="AspectFit">
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding StopPlayCommand}"/>
+        </Image.GestureRecognizers>
+      </Image>
+    </Grid>
+
+    <!--===Play/Pause===-->
+    <Grid Grid.Column="1" Padding="10" >
+      <Image Source="play" Aspect="AspectFit"
+             IsVisible="{Binding IsPlay, Converter={StaticResource InverseBoolConverter}}">
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding StartPlayCommand}" />
+        </Image.GestureRecognizers>
+      </Image>
+
+      <Image Source="pause" Aspect="AspectFit"
+             IsVisible="{Binding IsPlay}">
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding PausePlayCommand}" />
+        </Image.GestureRecognizers>
+      </Image>
+    </Grid>
+
+    <Grid Grid.Row="0" IsVisible="{Binding IsBusy}" Grid.ColumnSpan="2" BackgroundColor="#83FFFFFF">
+      <ActivityIndicator IsRunning="{Binding IsBusy}" HorizontalOptions="Center" VerticalOptions="Center" Margin="2,0,0,0" />
+    </Grid>
+  </Grid>
+
+    <!--=============No Internet Block==========-->
+    <Grid Grid.Row="0" Grid.RowSpan="2" BackgroundColor="White" IsVisible="{Binding IsError}"
+                 HorizontalOptions="Fill" VerticalOptions="Fill">
+      <StackLayout VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="White">
+        <Label FontSize="24" Text="Error"
+               HorizontalTextAlignment="Center"/>
+        <Label FontSize="18" Text="Check your connection!"
+               HorizontalTextAlignment="Center"/>
+        <ActivityIndicator IsRunning="{Binding IsError}" VerticalOptions="Center" />
+        <Button Text="Ok" BackgroundColor="#D3D3D3" TextColor="Black"
+                Command="{Binding ReconectedCommand}"/>
+      </StackLayout>
+    </Grid>
+  </Grid>
+</ContentPage>
