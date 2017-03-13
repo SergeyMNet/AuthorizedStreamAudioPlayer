@@ -5,14 +5,19 @@ Use HMAC Authentication for secure audio stream
 
 
 #backend:
+```cs
     [HmacAuthorize]    
     public class DataController : Controller
+```
     
 #client:
+```cs
     public const string AppId = "12b901a3-fb5c-457c-8d55-eb26748df1a2";
     public const string AppKey = "UAszSt1DJyAjoKg2VjZBjWOyzlKTp33v5QkMLhwxRp7=";
+```    
 
-#Android player
+##Android player
+```cs
     // Get Token
     var handler = new CustomDelegatingHandler();
     var header = await handler.GetToken(url);
@@ -25,8 +30,10 @@ Use HMAC Authentication for secure audio stream
 
     _player.SetDataSource(Forms.Context, uri, headers);
     _player.Prepare();
+ ```
     
-#iOS player
+##iOS player
+```cs
     // Get Token
     var handler = new CustomDelegatingHandler();
     var header = await handler.GetToken(url);
@@ -40,4 +47,4 @@ Use HMAC Authentication for secure audio stream
 
     AVPlayerItem item = new AVPlayerItem(asset);
     _player = AVPlayer.FromPlayerItem(item);
-
+```
