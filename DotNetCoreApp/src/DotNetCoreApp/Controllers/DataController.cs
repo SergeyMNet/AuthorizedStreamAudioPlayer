@@ -28,7 +28,7 @@ namespace DotNetCoreApp.Controllers
         {
             // todo use your path to file
             string filePath = Path.Combine(System.AppContext.BaseDirectory,
-             $"Data{Path.DirectorySeparatorChar}Sound{Path.DirectorySeparatorChar}sample.mp3");
+             $"sample.mp3");
 
              var bytes = new byte[0];
             using (var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))

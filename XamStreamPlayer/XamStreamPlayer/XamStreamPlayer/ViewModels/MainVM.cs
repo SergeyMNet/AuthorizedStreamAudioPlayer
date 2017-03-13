@@ -102,7 +102,7 @@ namespace XamStreamPlayer.ViewModels
 
             //todo: Get url from server
             await Task.Delay(500);
-            UrlSound = "";
+            UrlSound = GlobalSettings.ServerPath;
 
             IsBusy = false;
         }

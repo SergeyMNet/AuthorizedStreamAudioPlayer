@@ -1,2 +1,10 @@
 XamStreamPlayer/packages/
 DotNetCoreApp/.vs/DotNetCoreApp/v14/.suo
+DotNetCoreApp/src/DotNetCoreApp/bin/
+DotNetCoreApp/src/DotNetCoreApp/obj/
+XamStreamPlayer/XamStreamPlayer/XamStreamPlayer.Droid/bin/
+XamStreamPlayer/XamStreamPlayer/XamStreamPlayer.Droid/obj/
+XamStreamPlayer/XamStreamPlayer/XamStreamPlayer/bin/
+XamStreamPlayer/XamStreamPlayer/XamStreamPlayer/obj/
+XamStreamPlayer/XamStreamPlayer/XamStreamPlayer.iOS/bin/
+XamStreamPlayer/XamStreamPlayer/XamStreamPlayer.iOS/obj/
